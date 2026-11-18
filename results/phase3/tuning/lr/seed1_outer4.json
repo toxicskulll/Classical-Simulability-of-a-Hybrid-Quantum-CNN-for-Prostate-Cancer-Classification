@@ -1,0 +1,22 @@
+{
+  "model": "lr",
+  "outer_fold": 4,
+  "seed": 1,
+  "params": {
+    "k": 32,
+    "pca_dim": 16,
+    "resampler": "none",
+    "C": 0.34763150469436555,
+    "class_weight": "balanced"
+  },
+  "inner_mean_auc": 0.7647947007893484,
+  "inner_aucs": [
+    0.7435897435897436,
+    0.6948621553884712,
+    0.8559322033898304
+  ],
+  "n_trials": 25,
+  "n_complete": 19,
+  "n_pruned": 6,
+  "seconds_this_run": 4.7889987000016845
+}

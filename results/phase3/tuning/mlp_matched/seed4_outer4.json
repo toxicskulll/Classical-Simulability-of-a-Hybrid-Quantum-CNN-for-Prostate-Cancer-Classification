@@ -1,0 +1,25 @@
+{
+  "model": "mlp_matched",
+  "outer_fold": 4,
+  "seed": 4,
+  "params": {
+    "k": 32,
+    "pca_dim": 16,
+    "resampler": "none",
+    "lr": 0.001325954398585487,
+    "n_epochs": 80,
+    "batch_size": 32,
+    "focal_gamma": 1.4760733711918463,
+    "weight_decay": 0.005400958449797217
+  },
+  "inner_mean_auc": 0.8352524680877821,
+  "inner_aucs": [
+    0.8531409168081494,
+    0.8748387096774194,
+    0.7777777777777778
+  ],
+  "n_trials": 25,
+  "n_complete": 18,
+  "n_pruned": 7,
+  "seconds_this_run": 128.48696619999828
+}

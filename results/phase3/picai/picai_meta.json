@@ -1,0 +1,18 @@
+{
+  "domain_shift": {
+    "domain_classifier_auc": 0.9978552497451579,
+    "median_abs_smd": 0.8301644476032413,
+    "frac_features_abs_smd_gt_0.5": 0.6604477611940298,
+    "n_features": 268,
+    "prevalence_prostatex": 0.2324159021406728,
+    "prevalence_picai": 0.2833333333333333
+  },
+  "seconds": 687.2993025,
+  "mismatches": [
+    "ROI: PROSTATEx lesion vs PI-CAI whole gland",
+    "label: lesion ClinSig vs case csPCa (ISUP>=2)",
+    "DWI: PROSTATEx DWI vs PI-CAI high-b (hbv)"
+  ],
+  "threshold_source": "F1-optimal on PROSTATEx pooled OOF, per seed",
+  "picai_used_for_selection": false
+}

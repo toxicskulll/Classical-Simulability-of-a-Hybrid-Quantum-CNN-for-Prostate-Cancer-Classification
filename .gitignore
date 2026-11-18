@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.log
+
+# Input data are not distributed (see data/README.md).
+data/prostatex_lesions.csv
+data/picai/
+data/ProstateX-mapping.json
+
+# Test runs
+results/smoke/
+results/smoke_phase2/

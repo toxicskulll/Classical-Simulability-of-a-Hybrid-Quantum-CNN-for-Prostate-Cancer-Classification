@@ -1,0 +1,42 @@
+{
+  "model": "clin_lr_prebiopsy",
+  "seed": 2,
+  "fold": 0,
+  "config": "champion_v3",
+  "config_path": "configs/champion.yaml",
+  "threshold": 0.5787276396184613,
+  "wall_seconds": 0.34722000000010667,
+  "metrics": {
+    "AUC": 0.6237816764132554,
+    "Recall": 0.3888888888888889,
+    "Precision": 0.35,
+    "F1": 0.3684210526315789,
+    "Specificity": 0.7719298245614035,
+    "BalancedAccuracy": 0.5804093567251462
+  },
+  "preprocessing": {
+    "n_train": 252,
+    "n_test": 75,
+    "n_train_pos": 58,
+    "n_test_pos": 18,
+    "fused_features": [
+      "clin_psa",
+      "clin_psad",
+      "clin_prostate_volume",
+      "clin_patient_age"
+    ],
+    "leakage_reference": false,
+    "input_digest": "99123b6de2d64ef9"
+  },
+  "model_meta": {
+    "fit_seconds": 0.0038054000001466193,
+    "n_params": 5,
+    "coefficients": {
+      "clin_psa": 0.906754673978465,
+      "clin_psad": -0.3907590341605912,
+      "clin_prostate_volume": -1.5433848725820696,
+      "clin_patient_age": 0.4505011920210724
+    }
+  },
+  "python": "3.9.25"
+}

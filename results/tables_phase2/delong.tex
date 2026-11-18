@@ -1,0 +1,28 @@
+\begin{table}[t]
+\centering
+\caption{Paired comparison of HQCNN (8q, 3 conv layers) against each model on pooled OOF predictions. $\Delta$AUC = reference $-$ comparator, averaged over seeds; the 95\% CI is from a patient-level bootstrap. DeLong $p$: median (range) over seeds.}
+\label{tab:v3_delong}
+\small
+\begin{tabular}{lcccc}
+\toprule
+Comparator & $\Delta$AUC & 95\% CI & DeLong $p$ & Seeds $p<0.05$ \\
+\midrule
+Logistic regression & $-0.037$ & [-0.067, -0.006] & $0.190$ ($0.047$--$0.274$) & 1/5 \\
+RBF-SVM & $-0.014$ & [-0.042, +0.014] & $0.505$ ($0.142$--$0.986$) & 0/5 \\
+Random forest & $-0.003$ & [-0.032, +0.023] & $0.244$ ($0.046$--$0.526$) & 1/5 \\
+MLP (64, 32) & $-0.007$ & [-0.036, +0.023] & $0.484$ ($0.362$--$0.828$) & 0/5 \\
+Clinical LR (pre-biopsy) & $-0.025$ & [-0.082, +0.028] & $0.601$ ($0.192$--$0.955$) & 0/5 \\
+Clinical LR + Gleason$^{\dagger}$ & $-0.187$ & [-0.244, -0.134] & $<0.001$ ($<0.001$--$<0.001$) & 5/5 \\
+HQCNN, no entanglement & $+0.143$ & [+0.090, +0.197] & $0.007$ ($<0.001$--$0.168$) & 3/5 \\
+HQCNN, dephased control & $-0.019$ & [-0.047, +0.006] & $0.517$ ($0.077$--$0.963$) & 0/5 \\
+Frozen random circuit + head & $+0.149$ & [+0.096, +0.203] & $0.002$ ($<0.001$--$0.136$) & 4/5 \\
+Frozen random circuit, 8$\langle Z\rangle$ + LR & $+0.043$ & [+0.008, +0.078] & $0.228$ ($0.021$--$0.785$) & 2/5 \\
+HQCNN brickwork (8q) & $+0.004$ & [-0.018, +0.024] & $0.661$ ($0.508$--$0.904$) & 0/5 \\
+Classical tree net (tanh) & $+0.004$ & [-0.023, +0.030] & $0.381$ ($0.151$--$0.989$) & 0/5 \\
+Relaxed bilinear tree & $+0.026$ & [-0.003, +0.053] & $0.380$ ($0.123$--$0.798$) & 0/5 \\
+MLP 12-10-1 (HQCNN recipe) & $+0.027$ & [-0.007, +0.061] & $0.407$ ($0.005$--$0.654$) & 1/5 \\
+MLP 12-10-1 (sklearn) & $-0.027$ & [-0.051, -0.002] & $0.279$ ($0.034$--$0.872$) & 1/5 \\
+\bottomrule
+\end{tabular}
+\par\smallskip\footnotesize $^{\dagger}$Leakage reference only: Gleason grade is post-biopsy information and is not available at screening.
+\end{table}

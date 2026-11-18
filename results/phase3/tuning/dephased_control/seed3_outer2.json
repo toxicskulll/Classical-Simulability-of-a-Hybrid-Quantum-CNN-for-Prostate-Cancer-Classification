@@ -1,0 +1,25 @@
+{
+  "model": "dephased_control",
+  "outer_fold": 2,
+  "seed": 3,
+  "params": {
+    "k": 16,
+    "pca_dim": 12,
+    "resampler": "borderline",
+    "lr": 0.03757489793626283,
+    "n_epochs": 40,
+    "batch_size": 32,
+    "focal_gamma": 2.99603432452868,
+    "conv_layers": 2
+  },
+  "inner_mean_auc": 0.7284114115254466,
+  "inner_aucs": [
+    0.7513227513227512,
+    0.674043062200957,
+    0.7598684210526316
+  ],
+  "n_trials": 25,
+  "n_complete": 20,
+  "n_pruned": 5,
+  "seconds_this_run": 6434.367877500001
+}

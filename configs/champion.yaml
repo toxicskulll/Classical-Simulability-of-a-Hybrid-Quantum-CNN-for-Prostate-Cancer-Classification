@@ -1,0 +1,100 @@
+# Champion configuration for the revised paper (v3).
+# This file fully specifies data, preprocessing, encoding, circuit and training.
+# Every script reads it.
+# Paths are relative to the repository root.
+
+name: champion_v3
+
+data:
+  lesions_csv: data/prostatex_lesions.csv   # not distributed; see data/README.md
+  manifest_json: data/manifest.json
+  expected_n_lesions: 327
+  expected_n_patients: 204
+  # Two PROSTATEx findings can share a (ProxID, fid) key; their extracted features
+  # are identical. "max" = lesion is csPCa if any finding with that key is (original
+  # pipeline). "drop" = remove keys whose findings disagree.
+  duplicate_label_policy: max
+
+cv:
+  n_splits: 5
+  group_col: ProxID           # StratifiedGroupKFold: no patient in train and test
+  seeds: [0, 1, 2, 3, 4]      # each seed reshuffles folds AND reseeds every component
+
+features:
+  # Pre-biopsy clinical covariates only. Gleason is never a model input.
+  clinical: [clin_psa, clin_psad, clin_prostate_volume, clin_patient_age]
+  clinical_impute: median     # fitted on the training fold
+  radiomics_modalities: [t2w, adc, dwi, ktrans]
+
+preprocessing:                # every step is fitted on the training fold only
+  drop_zero_variance: true
+  radiomics_scaler: standard
+  selector: selectkbest       # f_classif on standardised radiomics
+  k: 24
+  clinical_scaler: standard
+  fusion: early               # [clinical, selected radiomics] concatenated before PCA
+  pca_dim: 12
+  resampler: borderline       # none | smote | borderline | adasyn; applied after PCA
+  resampler_k_neighbors: 5
+
+hqcnn:
+  n_qubits: 8
+  encoding: angle
+  # Features are loaded in rounds of n_qubits; round r uses gate reupload_gates[r].
+  # With 12 features on 8 qubits: RY on q0..q7 (features 1-8), RZ on q0..q3 (9-12).
+  reupload_gates: [RY, RZ, RX, RY]
+  angle_scaling: minmax       # minmax (fit on train, test clipped) | arctan
+  angle_range: [0.0, 3.141592653589793]
+  conv_layers: 3              # conv blocks per pair before each pooling level
+  conv_topology: tree         # tree | brickwork (offset conv layer before each pooling)
+  # conv block: RY(t1)xRY(t2), CNOT(a->b), RY(t3)xRY(t4), CNOT(b->a), RZ(t5)xRZ(t6)
+  pooling_gate: crx_crz       # CRZ then CRX, source -> sink
+  pooling_survivor: second    # 8 -> 4 -> 2 -> 1, read out <Z> on the survivor
+  init: uniform_pi            # quantum params ~ U(-pi, pi); head a=1, b=0
+  loss: focal
+  focal_gamma: 2.335
+  optimizer: adam
+  lr: 0.025
+  n_epochs: 80
+  batch_size: 64
+  class_weight: balanced      # computed on the (resampled) training set
+  threshold: f1               # F1-optimal cut on training-fold probabilities
+  simulator:
+    # default.qubit + backprop evaluates a whole mini-batch at once (parameter
+    # broadcasting); exact statevector, same maths as lightning.qubit + adjoint.
+    device: default.qubit
+    diff_method: backprop
+    broadcast: true
+
+baselines:                    # same folds, same resampled PCA inputs, same seeds
+  threshold: f1
+  lr:
+    C: 1.0
+    max_iter: 2000
+  svm_rbf:
+    C: 1.0
+    gamma: scale
+  rf:
+    n_estimators: 100
+    max_depth: 5
+  mlp:
+    hidden_layer_sizes: [64, 32]
+    alpha: 0.001
+    max_iter: 1000
+
+clinical_arms:                # standardised clinical columns -> LR, no PCA, no resampling
+  threshold: f1
+  C: 1.0
+  class_weight: balanced
+  arms:
+    clin_lr_prebiopsy: [clin_psa, clin_psad, clin_prostate_volume, clin_patient_age]
+    # LEAKAGE REFERENCE ONLY: Gleason is post-biopsy and near-deterministic of the label.
+    clin_lr_gleason_leakref: [clin_psa, clin_psad, clin_prostate_volume, clin_patient_age, leak_gleason_grade]
+
+models: [hqcnn, lr, svm_rbf, rf, mlp, clin_lr_prebiopsy, clin_lr_gleason_leakref]
+leakage_reference_models: [clin_lr_gleason_leakref]
+
+summary:
+  bootstrap_iterations: 2000
+  bootstrap_unit: patient     # resample ProxIDs, not lesions
+  reference_model: hqcnn      # DeLong HQCNN vs every other model

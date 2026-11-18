@@ -1,0 +1,15 @@
+{
+  "config": {
+    "k": 16,
+    "pca_dim": 16,
+    "resampler": "smote",
+    "lr": 0.04,
+    "n_epochs": 20,
+    "batch_size": 32,
+    "focal_gamma": 1.5,
+    "conv_layers": 1
+  },
+  "max_abs_dprob": 1.2212453270876722e-15,
+  "seconds_pennylane": 42.969347500000005,
+  "seconds_twin": 18.189286599999996
+}

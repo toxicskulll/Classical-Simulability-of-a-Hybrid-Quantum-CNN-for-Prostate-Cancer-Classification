@@ -1,0 +1,24 @@
+{
+  "model": "rf",
+  "outer_fold": 1,
+  "seed": 4,
+  "params": {
+    "k": 32,
+    "pca_dim": 8,
+    "resampler": "none",
+    "n_estimators": 500,
+    "max_depth": 3,
+    "min_samples_leaf": 10,
+    "max_features": "sqrt"
+  },
+  "inner_mean_auc": 0.7124811663577476,
+  "inner_aucs": [
+    0.6997776130467013,
+    0.7876658860265418,
+    0.65
+  ],
+  "n_trials": 25,
+  "n_complete": 18,
+  "n_pruned": 7,
+  "seconds_this_run": 58.905097700000624
+}

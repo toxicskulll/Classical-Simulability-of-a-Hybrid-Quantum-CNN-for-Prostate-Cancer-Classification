@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\caption{Two-qubit (CNOT) gate count of the tree HQCNN (3 conv layers per level) on an all-to-all versus a linear nearest-neighbour device. Conv block = 2 CNOT, CRZ = CRX = 2 CNOT, SWAP = 3 CNOT. Tree SWAPs follow $S(n)=\tfrac{n}{2}(\log_2 n-2)+1$.}
+\label{tab:v3_routing}
+\small
+\begin{tabular}{lccccc}
+\toprule
+Qubits & CNOT (all-to-all) & SWAPs (linear) & CNOT (linear) & Overhead & Brickwork CNOT (linear) \\
+\midrule
+4 & 30 & 1 & 33 & 1.10$\times$ & 35 \\
+8 & 70 & 5 & 85 & 1.21$\times$ & 99 \\
+16 & 150 & 17 & 201 & 1.34$\times$ & 259 \\
+32 & 310 & 49 & 457 & 1.47$\times$ & 659 \\
+64 & 630 & 129 & 1017 & 1.61$\times$ & 1647 \\
+128 & 1270 & 321 & 2233 & 1.76$\times$ & 4039 \\
+256 & 2550 & 769 & 4857 & 1.90$\times$ & 9707 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\caption{Circuit resources of the tree and brickwork HQCNN (3 conv layers, 12 angle-encoded features, from \texttt{qml.specs}). Parameters include the 2-parameter affine head.}
+\label{tab:v3_specs}
+\small
+\begin{tabular}{lcccc}
+\toprule
+Qubits & Params (tree / brick) & Gates & 2-qubit gates & Depth \\
+\midrule
+4 & 62 / 68 & 90 / 98 & 24 / 26 & 37 / 42 \\
+6 & 102 / 120 & 142 / 166 & 40 / 46 & 53 / 63 \\
+8 & 142 / 166 & 194 / 226 & 56 / 64 & 53 / 63 \\
+10 & 182 / 224 & 246 / 302 & 72 / 86 & 70 / 85 \\
+12 & 222 / 270 & 298 / 362 & 88 / 104 & 69 / 84 \\
+\bottomrule
+\end{tabular}
+\end{table}

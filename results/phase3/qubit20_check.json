@@ -1,0 +1,38 @@
+{
+  "n_qubits": 20,
+  "conv_layers": 3,
+  "n_features": 20,
+  "n_fit": 408,
+  "statevector_MB_per_state": 16.0,
+  "statevector_GB_batch64": 1.0,
+  "lightning_tree": {
+    "n_params_circuit": 380,
+    "n_ops": 76,
+    "forward_s": 8.9397376,
+    "grad_s": 8.9383738,
+    "epoch_s_est": 3646.8565104000004,
+    "fold_80ep_h_est": 81.04125578666667,
+    "cv25_h_est_7workers": 289.4330563809524
+  },
+  "lightning_brickwork": {
+    "n_params_circuit": 476,
+    "n_ops": 92,
+    "forward_s": 10.694306950000005,
+    "grad_s": 10.7076991,
+    "epoch_s_est": 4368.7412328,
+    "fold_80ep_h_est": 97.08313850666666,
+    "cv25_h_est_7workers": 346.72549466666663
+  },
+  "twin_noiseless": {
+    "n_params": 382,
+    "epoch_s": 3.0138898999999952,
+    "fold_80ep_min": 4.018519866666661,
+    "cv25_h_7workers": 0.2391976111111107
+  },
+  "twin_noisy_p2_1e-3": {
+    "n_params": 382,
+    "epoch_s": 15.377312799999999,
+    "fold_80ep_min": 20.50308373333333,
+    "cv25_h_7workers": 1.2204216507936505
+  }
+}

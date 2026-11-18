@@ -1,0 +1,11 @@
+n_qubits,topology,n_params,n_params_circuit,gates,gates_2q,depth,n_features
+4,tree,62,60,90,24,37,12
+4,brickwork,68,66,98,26,42,12
+6,tree,102,100,142,40,53,12
+6,brickwork,120,118,166,46,63,12
+8,tree,142,140,194,56,53,12
+8,brickwork,166,164,226,64,63,12
+10,tree,182,180,246,72,70,12
+10,brickwork,224,222,302,86,85,12
+12,tree,222,220,298,88,69,12
+12,brickwork,270,268,362,104,84,12

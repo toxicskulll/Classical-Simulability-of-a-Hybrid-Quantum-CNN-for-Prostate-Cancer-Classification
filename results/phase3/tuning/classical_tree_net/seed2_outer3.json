@@ -1,0 +1,25 @@
+{
+  "model": "classical_tree_net",
+  "outer_fold": 3,
+  "seed": 2,
+  "params": {
+    "k": 24,
+    "pca_dim": 12,
+    "resampler": "borderline",
+    "lr": 0.0030052819093472046,
+    "n_epochs": 40,
+    "batch_size": 16,
+    "focal_gamma": 1.9745806490733306,
+    "weight_decay": 0.0026612818984787833
+  },
+  "inner_mean_auc": 0.7397304856343757,
+  "inner_aucs": [
+    0.6950310559006211,
+    0.8070175438596491,
+    0.7171428571428571
+  ],
+  "n_trials": 25,
+  "n_complete": 12,
+  "n_pruned": 13,
+  "seconds_this_run": 601.2737153999988
+}

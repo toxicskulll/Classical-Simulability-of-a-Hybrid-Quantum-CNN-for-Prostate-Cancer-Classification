@@ -1,0 +1,22 @@
+{
+  "model": "svm_rbf",
+  "outer_fold": 3,
+  "seed": 4,
+  "params": {
+    "k": 16,
+    "pca_dim": 8,
+    "resampler": "none",
+    "C": 1.2583632549420367,
+    "gamma": 0.0066995337789676045
+  },
+  "inner_mean_auc": 0.7332140263512813,
+  "inner_aucs": [
+    0.7467320261437909,
+    0.6814814814814815,
+    0.7714285714285715
+  ],
+  "n_trials": 25,
+  "n_complete": 18,
+  "n_pruned": 7,
+  "seconds_this_run": 7.8947383999984595
+}

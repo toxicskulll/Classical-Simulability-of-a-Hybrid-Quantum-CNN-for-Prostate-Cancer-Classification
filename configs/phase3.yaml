@@ -1,0 +1,39 @@
+# Phase 3: evaluation of nested-tuned configurations (scripts/tune_nested.py).
+# Each tuned model uses, on outer fold k, the hyperparameters and preprocessing
+# (SelectKBest k, PCA dim, resampler) selected by inner CV on that fold's training data.
+# Because preprocessing is tuned per model, inputs differ across models by design, so the
+# identical-input assertion is relaxed; folds, seeds and lesions stay paired.
+
+extends: phase2.yaml
+name: phase3_tuned
+
+# Tuning runs independently for every seed (tune_nested.py --seeds 0 1 2 3 4), so every
+# (seed, fold) is evaluated with a config chosen only on that fold's training data.
+cv:
+  seeds: [0, 1, 2, 3, 4]
+
+tuned_models:
+  hqcnn_tuned: hqcnn
+  dephased_tuned: dephased_control
+  tree_net_tuned: classical_tree_net
+  mlp_matched_tuned: mlp_matched
+  lr_tuned: lr
+  svm_tuned: svm_rbf
+  rf_tuned: rf
+
+models:
+  - hqcnn_tuned
+  - hqcnn                  # untuned champion (context)
+  - dephased_tuned
+  - tree_net_tuned
+  - mlp_matched_tuned
+  - lr_tuned
+  - svm_tuned
+  - rf_tuned
+  - clin_lr_prebiopsy
+  - clin_lr_gleason_leakref  # leakage reference (context; not a candidate model)
+
+summary:
+  tables_dir: results/tables_phase3
+  reference_model: hqcnn_tuned
+  require_identical_inputs: false

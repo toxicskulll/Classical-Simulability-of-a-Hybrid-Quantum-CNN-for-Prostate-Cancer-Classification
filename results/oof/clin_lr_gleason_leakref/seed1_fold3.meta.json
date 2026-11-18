@@ -1,0 +1,44 @@
+{
+  "model": "clin_lr_gleason_leakref",
+  "seed": 1,
+  "fold": 3,
+  "config": "champion_v3",
+  "config_path": "configs/champion.yaml",
+  "threshold": 0.47106527345529264,
+  "wall_seconds": 0.4149921999999151,
+  "metrics": {
+    "AUC": 0.9553571428571428,
+    "Recall": 0.875,
+    "Precision": 0.6086956521739131,
+    "F1": 0.717948717948718,
+    "Specificity": 0.7857142857142857,
+    "BalancedAccuracy": 0.8303571428571428
+  },
+  "preprocessing": {
+    "n_train": 269,
+    "n_test": 58,
+    "n_train_pos": 60,
+    "n_test_pos": 16,
+    "fused_features": [
+      "clin_psa",
+      "clin_psad",
+      "clin_prostate_volume",
+      "clin_patient_age",
+      "leak_gleason_grade"
+    ],
+    "leakage_reference": true,
+    "input_digest": "00f8e167151aa3ae"
+  },
+  "model_meta": {
+    "fit_seconds": 0.0039157999999588355,
+    "n_params": 6,
+    "coefficients": {
+      "clin_psa": 0.07996932656847995,
+      "clin_psad": 0.16253354020538174,
+      "clin_prostate_volume": -1.0576577846980943,
+      "clin_patient_age": 0.39828302854286274,
+      "leak_gleason_grade": 2.25288338087087
+    }
+  },
+  "python": "3.9.25"
+}

@@ -1,0 +1,23 @@
+{
+  "channel_twin_vs_exact_twin_max_abs": 1.4432899320127035e-15,
+  "dephased_twin_vs_default_mixed_max_abs": 5.440092820663267e-15,
+  "max_pair_negativity_dephased": 0.0,
+  "max_pair_negativity_full": 0.4949595842475934,
+  "no_entanglement_features_on_readout": [
+    7
+  ],
+  "no_entanglement_change_other_features": 1.1102230246251565e-16,
+  "no_entanglement_change_readout_features": 0.4814431789045534,
+  "param_counts": {
+    "hqcnn": 142,
+    "no_entanglement": 142,
+    "dephased_control": 142,
+    "frozen_random (trained)": 2,
+    "frozen_random_multiZ (trained)": 9,
+    "brickwork_8q": 166,
+    "classical_tree_net": 151,
+    "relaxed_bilinear_tree": 156,
+    "mlp_matched": 141
+  },
+  "trainer_twin_vs_phase1_hqcnn_seed0_fold0_max_abs": 4.79638273542804e-11
+}

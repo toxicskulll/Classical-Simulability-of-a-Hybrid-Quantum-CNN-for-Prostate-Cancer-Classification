@@ -1,0 +1,29 @@
+\begin{table}[t]
+\centering
+\caption{Pooled out-of-fold AUC: mean $\pm$ SD across seeds, with 95\% CI from a patient-level bootstrap (2000 resamples) of the seed-averaged pooled AUC.}
+\label{tab:v3_pooled}
+\small
+\begin{tabular}{lcc}
+\toprule
+Model & Pooled AUC & 95\% CI \\
+\midrule
+HQCNN (8q, 3 conv layers) & $0.690 \pm 0.027$ & [0.639, 0.740] \\
+Logistic regression & $0.727 \pm 0.021$ & [0.670, 0.779] \\
+RBF-SVM & $0.704 \pm 0.016$ & [0.652, 0.757] \\
+Random forest & $0.693 \pm 0.017$ & [0.642, 0.744] \\
+MLP (64, 32) & $0.697 \pm 0.030$ & [0.644, 0.752] \\
+Clinical LR (pre-biopsy) & $0.715 \pm 0.013$ & [0.649, 0.779] \\
+Clinical LR + Gleason$^{\dagger}$ & $0.876 \pm 0.007$ & [0.832, 0.918] \\
+HQCNN, no entanglement & $0.546 \pm 0.081$ & [0.504, 0.590] \\
+HQCNN, dephased control & $0.709 \pm 0.034$ & [0.659, 0.758] \\
+Frozen random circuit + head & $0.541 \pm 0.046$ & [0.506, 0.576] \\
+Frozen random circuit, 8$\langle Z\rangle$ + LR & $0.647 \pm 0.044$ & [0.604, 0.689] \\
+HQCNN brickwork (8q) & $0.686 \pm 0.024$ & [0.638, 0.735] \\
+Classical tree net (tanh) & $0.686 \pm 0.016$ & [0.636, 0.734] \\
+Relaxed bilinear tree & $0.664 \pm 0.016$ & [0.620, 0.708] \\
+MLP 12-10-1 (HQCNN recipe) & $0.663 \pm 0.032$ & [0.620, 0.710] \\
+MLP 12-10-1 (sklearn) & $0.717 \pm 0.014$ & [0.666, 0.765] \\
+\bottomrule
+\end{tabular}
+\par\smallskip\footnotesize $^{\dagger}$Leakage reference only: Gleason grade is post-biopsy information and is not available at screening.
+\end{table}

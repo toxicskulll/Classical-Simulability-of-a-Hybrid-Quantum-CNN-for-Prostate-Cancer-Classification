@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\caption{Pooled out-of-fold AUC: mean $\pm$ SD across seeds, with 95\% CI from a patient-level bootstrap (2000 resamples) of the seed-averaged pooled AUC.}
+\label{tab:v3_pooled}
+\small
+\begin{tabular}{lcc}
+\toprule
+Model & Pooled AUC & 95\% CI \\
+\midrule
+HQCNN (8q, 3 conv layers) & $0.690 \pm 0.027$ & [0.639, 0.740] \\
+Logistic regression & $0.727 \pm 0.021$ & [0.670, 0.779] \\
+RBF-SVM & $0.704 \pm 0.016$ & [0.652, 0.757] \\
+Random forest & $0.693 \pm 0.017$ & [0.642, 0.744] \\
+MLP (64, 32) & $0.697 \pm 0.030$ & [0.644, 0.752] \\
+Clinical LR (pre-biopsy) & $0.715 \pm 0.013$ & [0.649, 0.779] \\
+Clinical LR + Gleason$^{\dagger}$ & $0.876 \pm 0.007$ & [0.832, 0.918] \\
+\bottomrule
+\end{tabular}
+\par\smallskip\footnotesize $^{\dagger}$Leakage reference only: Gleason grade is post-biopsy information and is not available at screening.
+\end{table}

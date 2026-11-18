@@ -1,0 +1,15 @@
+\begin{table}[t]
+\centering
+\caption{External evaluation on PI-CAI (1,500 cases, 1,476 patients) of models trained only on PROSTATEx (shared T2W/ADC/DWI radiomics + pre-biopsy clinical). Threshold: F1-optimal on PROSTATEx OOF. Mean $\pm$ SD over 5 seeds; AUC 95\% CI from a patient-level bootstrap. Note: PROSTATEx features are lesion-level and PI-CAI features whole-gland.}
+\label{tab:v3_picai}
+\small
+\begin{tabular}{lccccccc}
+\toprule
+Model & PROSTATEx OOF AUC & PI-CAI AUC & 95\% CI & Recall & Precision & F1 & Specificity \\
+\midrule
+HQCNN (8q) & $0.732 \pm 0.030$ & $0.491 \pm 0.059$ & [0.475, 0.507] & $0.034$ & $0.147$ & $0.052$ & $0.969$ \\
+Logistic regression & $0.744 \pm 0.024$ & $0.543 \pm 0.061$ & [0.511, 0.573] & $0.936$ & $0.285$ & $0.437$ & $0.072$ \\
+Classical tree net & $0.701 \pm 0.023$ & $0.542 \pm 0.028$ & [0.517, 0.565] & $0.167$ & $0.569$ & $0.141$ & $0.841$ \\
+\bottomrule
+\end{tabular}
+\end{table}

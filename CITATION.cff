@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper."
+title: "Classical Simulability and NISQ Feasibility of a Tree-Structured Hybrid QCNN for Prostate Cancer Classification"
+type: software
+license: Apache-2.0
+authors:
+  - given-names: "Aadishesh Gopal"
+    family-names: "Padasalgi"
+repository-code: "https://github.com/toxicskulll/Classical-Simulability-of-a-Hybrid-Quantum-CNN-for-Prostate-Cancer-Classification"

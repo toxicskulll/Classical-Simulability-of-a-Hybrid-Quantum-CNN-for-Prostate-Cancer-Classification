@@ -1,0 +1,47 @@
+# Phase 2C: mechanism ablations. Inherits everything from champion.yaml (same data,
+# folds, seeds 0-4, preprocessing, PCA-12 inputs, HQCNN hyperparameters) and only adds
+# the ablation arms. Phase 1 models are included as context rows; their OOF files are
+# reused, so only the new arms are trained.
+#
+# Caveat: every quantum arm reuses the champion's hyperparameters (lr 0.025, 80 epochs,
+# batch 64, focal gamma 2.335), which were not re-tuned. Nested tuning for all models is
+# Phase 3.
+
+extends: champion.yaml
+name: phase2_ablations
+
+phase2_arms:
+  no_entanglement:
+    hqcnn_overrides: {entangling: none}          # CNOTs removed; CRZ/CRX -> RZ/RX on sink
+  dephased_control: {}                            # classically controlled gates (twin simulator)
+  frozen_random: {}                               # frozen random circuit, train head (a, b)
+  frozen_random_multiZ: {}                        # same circuit, <Z> on all qubits -> LR head
+  brickwork_8q:
+    hqcnn_overrides: {conv_topology: brickwork}
+  classical_tree_net: {}                          # tanh 6->3 nodes, Bloch leaves
+  relaxed_bilinear_tree: {rank: 2}                # bilinear Bloch nodes, no unitarity
+  mlp_matched: {hidden: 10}                       # 12 -> 10 -> 1 tanh = 141 params
+  mlp_matched_sklearn: {}                         # same architecture via sklearn
+
+models:
+  # reference + Phase 1 context rows (OOF reused from results/oof/)
+  - hqcnn
+  - lr
+  - svm_rbf
+  - rf
+  - mlp
+  - clin_lr_prebiopsy
+  - clin_lr_gleason_leakref
+  # Phase 2C arms
+  - no_entanglement
+  - dephased_control
+  - frozen_random
+  - frozen_random_multiZ
+  - brickwork_8q
+  - classical_tree_net
+  - relaxed_bilinear_tree
+  - mlp_matched
+  - mlp_matched_sklearn
+
+summary:
+  tables_dir: results/tables_phase2

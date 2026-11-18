@@ -1,0 +1,25 @@
+{
+  "model": "hqcnn",
+  "outer_fold": 3,
+  "seed": 3,
+  "params": {
+    "k": 24,
+    "pca_dim": 16,
+    "resampler": "smote",
+    "lr": 0.018779901963481192,
+    "n_epochs": 60,
+    "batch_size": 64,
+    "focal_gamma": 1.5853251982573258,
+    "conv_layers": 2
+  },
+  "inner_mean_auc": 0.7341115725627603,
+  "inner_aucs": [
+    0.6578947368421052,
+    0.7501853224610823,
+    0.7942546583850932
+  ],
+  "n_trials": 25,
+  "n_complete": 17,
+  "n_pruned": 8,
+  "seconds_this_run": 0.015979299999999697
+}

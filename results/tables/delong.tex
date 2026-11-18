@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\caption{Paired comparison of HQCNN (8q, 3 conv layers) against each model on pooled OOF predictions. $\Delta$AUC = reference $-$ comparator, averaged over seeds; the 95\% CI is from a patient-level bootstrap. DeLong $p$: median (range) over seeds.}
+\label{tab:v3_delong}
+\small
+\begin{tabular}{lcccc}
+\toprule
+Comparator & $\Delta$AUC & 95\% CI & DeLong $p$ & Seeds $p<0.05$ \\
+\midrule
+Logistic regression & $-0.037$ & [-0.067, -0.006] & $0.190$ ($0.047$--$0.274$) & 1/5 \\
+RBF-SVM & $-0.014$ & [-0.042, +0.014] & $0.505$ ($0.142$--$0.986$) & 0/5 \\
+Random forest & $-0.003$ & [-0.032, +0.023] & $0.244$ ($0.046$--$0.526$) & 1/5 \\
+MLP (64, 32) & $-0.007$ & [-0.036, +0.023] & $0.484$ ($0.362$--$0.828$) & 0/5 \\
+Clinical LR (pre-biopsy) & $-0.025$ & [-0.082, +0.028] & $0.601$ ($0.192$--$0.955$) & 0/5 \\
+Clinical LR + Gleason$^{\dagger}$ & $-0.187$ & [-0.244, -0.134] & $<0.001$ ($<0.001$--$<0.001$) & 5/5 \\
+\bottomrule
+\end{tabular}
+\par\smallskip\footnotesize $^{\dagger}$Leakage reference only: Gleason grade is post-biopsy information and is not available at screening.
+\end{table}

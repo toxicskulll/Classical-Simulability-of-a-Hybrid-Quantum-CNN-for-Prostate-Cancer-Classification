@@ -1,0 +1,92 @@
+{
+  "sources": {
+    "features": {
+      "description": "PyRadiomics features and pre-biopsy clinical variables per PROSTATEx finding",
+      "rows": 330
+    },
+    "findings": {
+      "file": "ProstateX-Findings-Train.csv",
+      "sha256": "311c21c44691eb73868ca77f36f814300114117ca3aece209b5a446cf5fcf70f"
+    }
+  },
+  "output": {
+    "path": "data/prostatex_lesions.csv",
+    "sha256": "cc3ca3532c257e9f00974167b2eefe4ca13ad6223768a8c79fc85fdf473f54df"
+  },
+  "duplicate_label_policy": "max",
+  "duplicate_rows_removed": [
+    {
+      "ProxID": "ProstateX-0005",
+      "fid": 1
+    },
+    {
+      "ProxID": "ProstateX-0025",
+      "fid": 1
+    },
+    {
+      "ProxID": "ProstateX-0159",
+      "fid": 1
+    }
+  ],
+  "shared_finding_keys": [
+    {
+      "ProxID": "ProstateX-0005",
+      "fid": 1,
+      "n_findings": 2,
+      "labels": [
+        1,
+        0
+      ],
+      "zones": [
+        "PZ",
+        "TZ"
+      ],
+      "conflicting": true
+    },
+    {
+      "ProxID": "ProstateX-0025",
+      "fid": 1,
+      "n_findings": 2,
+      "labels": [
+        0,
+        0
+      ],
+      "zones": [
+        "PZ",
+        "PZ"
+      ],
+      "conflicting": false
+    },
+    {
+      "ProxID": "ProstateX-0159",
+      "fid": 1,
+      "n_findings": 2,
+      "labels": [
+        0,
+        0
+      ],
+      "zones": [
+        "PZ",
+        "PZ"
+      ],
+      "conflicting": false
+    }
+  ],
+  "n_lesions": 327,
+  "n_patients": 204,
+  "n_positive": 76,
+  "n_radiomics": 352,
+  "radiomics_per_modality": {
+    "t2w": 88,
+    "adc": 88,
+    "dwi": 88,
+    "ktrans": 88
+  },
+  "clinical_missing": {
+    "clin_psa": 20,
+    "clin_psad": 23,
+    "clin_prostate_volume": 21,
+    "clin_patient_age": 18
+  },
+  "legacy_label_mismatches": 0
+}
